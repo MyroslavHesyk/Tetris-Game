@@ -12,8 +12,24 @@ body {
 }
 
 .grid {
-    background-color: rgba(0, 17, 255, 0.395);
+    background-color:  rgb(255, 0, 234);
     padding: 0.5vh;
     display: grid;
-    grid-template-columns: ;
+    grid-template-columns: repeat(10,auto);
+    gap: 0.5vh;
+    border-radius: 0.5vh;
+}
+
+.grid > div {
+    height: min(4vh, 7vw);
+    width: min(4vh, 7vw);
+    background: rgba(0, 17, 255, 0.582);
+    border-radius: 0.3vh;
+}
+
+.grid > .O {
+    background: rgb(80, 212, 95);
+}
+.grid > .J {
+    background: rgb(217, 222, 72);
 }
