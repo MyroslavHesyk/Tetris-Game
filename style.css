@@ -1,35 +1,157 @@
 * {
     margin: 0;
 }
+@font-face {
+    font-family: 'Better VCR';
+    src: url(./assets/fonts/better-vcr.otf);
+   
+}
 
 body {
     background: 
-        linear-gradient(135deg, rgb(93, 230, 93), rgb(73, 176, 210));
-    height: 100vh;
+        linear-gradient(135deg, rgb(167, 167, 167), rgb(215, 215, 215));
+    height: 200vh;
+    color: #0F0F0F;
+    
+}
+.main {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
-
+.main-text {
+    border: 1vh outset  #0F0F0F ;
+    padding: 2vw;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+}
+.title {
+    font-family: 'Better VCR';
+    font-size: 4vh;
+    
+}
+.subtitle {
+    font-family: 'Pixelify Sans';
+    font-size: 3vh;
+}
 .grid {
-    background-color:  rgb(255, 0, 234);
+    background-color:  #40423F;
     padding: 0.5vh;
     display: grid;
     grid-template-columns: repeat(10,auto);
     gap: 0.5vh;
-    border-radius: 0.5vh;
+    /* border-radius: 0.5vh; */
 }
 
 .grid > div {
     height: min(4vh, 7vw);
     width: min(4vh, 7vw);
-    background: rgba(0, 17, 255, 0.582);
-    border-radius: 0.3vh;
+    background: #0F0F0F;
+    /* border-radius: 0.3vh; */
+    border: #0F0F0F 0.3vh outset;
 }
 
 .grid > .O {
-    background: rgb(80, 212, 95);
+    background: #FEE904;
+  
 }
 .grid > .J {
-    background: rgb(217, 222, 72);
+    background: #027FFD;
 }
+.grid > .T {
+    background: #A900FD;
+}
+.grid > .I {
+    background: #00F0F0;
+}
+.grid > .L {
+    background: #F0A100;
+}
+.grid > .S {
+    background: #55FE01;
+}
+.grid > .Z {
+    background: #FE0056;
+}
+
+
+/* Button Sound */
+/* .pixel {
+    font-size: 25px;
+    color: rgb(167, 167, 167);
+    height: auto;
+    margin: 10px;
+    font-family: 'Pixelify Sans';
+    
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    text-transform: uppercase;
+    
+    cursor: pointer;
+    
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  .pixel:active {
+    top: 2px;
+  } */
+  
+ 
+  .pixel {
+    position: fixed;
+    top: 10px;
+    right:3vh;
+    display: block;
+    font-family: 'Pixelify Sans';
+    text-transform: uppercase;
+    font-size: 3vh;
+    color: rgb(167, 167, 167);
+    z-index: 1000; /* Значення z-index робимо великим, щоб кнопка була над іншими елементами */
+  }
+  
+  .pixel::before,
+  .pixel::after {
+    content: "";
+    display: block;
+    position: absolute;
+    background: #0F0F0F;
+    z-index: -1;
+  }
+  
+  .pixel::before {
+    top: 10px;
+    bottom: 10px;
+    left: -10px;
+    right: -10px;
+  }
+  
+  .pixel::after {
+    top: 4px;
+    bottom: 4px;
+    left: -6px;
+    right: -6px;
+  }
+  
+  .pixel {
+    padding: 10px 10px;
+    background: #0F0F0F;
+  }
+  @media only screen and (max-width: 768px) {
+    .pixel {
+        position: relative; 
+        top: 10px;
+        right: -320px;
+        margin-top: 0;
+    }
+  }
+
+
+  

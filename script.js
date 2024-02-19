@@ -1,11 +1,12 @@
-//
-//
-//
-//
+// 1. Додати нові фігури
+// 2. Стилізувати нові фігури
+// 3. Додати функцію рандому котра буде поветати випадкову фігуру
+// 4. Центрувати фігуру незалежно від ширини
 
 const PLAYFIELD_COLUMNS = 10;
 const PLAYFIELD_ROWS = 20;
-const TETROMINO_NAMES = ['O', 'J'];
+const TETROMINO_NAMES = ['O', 'J','L','T','I','S','Z'];
+const TETROMINO_NAMBERS = [1,2,3,4,5,6,7];
 const TETROMINOES = {
     'O': [
         [1,1],
@@ -16,8 +17,35 @@ const TETROMINOES = {
         [1,0,0],
         [1,1,1],
         [0,0,0]
-    ]
+    ],
+    'L': [
+        [0,0,0],
+        [1,1,1],
+        [1,0,0]
+    ],
+    'T': [
+        [0,1,0],
+        [1,1,1],
+        [0,0,0]
+    ],
+    'I': [
+        [0,1,0],
+        [0,1,0],
+        [0,1,0],
+        [0,1,0]
+    ],
+    'S': [
+        [0,1,1],
+        [1,1,0],
+        [0,0,0]
+    ],
+    'Z': [
+        [1,1,0],
+        [0,1,1],
+        [0,0,0]
+    ],
 }
+
 function convertPositionToIndex(row, column){
     return row * PLAYFIELD_COLUMNS + column;
 }
@@ -36,11 +64,13 @@ function generatePlayField(){
     // console.table(playfield);
     
 }
-
+console.log(Math.random())
 
 function generateTetramino(){
      // there is we retern figure from index
-    const name = TETROMINO_NAMES[0];
+     
+     const randomIndex = Math.floor(Math.random() * TETROMINO_NAMBERS.length);
+    const name = TETROMINO_NAMES[randomIndex];
     const matrix = TETROMINOES[name];
     //console.log(matrix)
      // console.log(matrix);

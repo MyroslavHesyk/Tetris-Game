@@ -4,17 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tetris by MyroslavHesyk</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/af737f80ce.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
-    
-    <div class="grid">
-        <!-- <div></div>
-        <div></div>
-        <div></div> -->
-    </div>
+    <!-- <iframe src="./assets/audio/tetris.mp3" allow="autoplay" style="display:none" id="iframeAudio">
+    </iframe>  -->
+    <div class="sound">
+             <button id="soundButton" class="sound-off pixel"><i class="fas fa-volume-mute"></i></button>
+        </div>
+    <div class="main">
+        <div class="main-text">
+            <h1 class="title">Tetris original</h1>
+            <h3 class="subtitle">by Myroslav Hesyk</h3>
+        </div>
+        <div class="grid">
+            <!-- <div></div>
+            <div></div>
+            <div></div> -->
+        </div>
 
+       
+    </div> 
+   
 
     <script src="/script.js"></script>
+    <script src="./sound.js"></script>
 </body>
 </html>
