@@ -1,0 +1,19 @@
+* {
+    margin: 0;
+}
+
+body {
+    background: 
+        linear-gradient(135deg, rgb(93, 230, 93), rgb(73, 176, 210));
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid {
+    background-color: rgba(0, 17, 255, 0.395);
+    padding: 0.5vh;
+    display: grid;
+    grid-template-columns: ;
+}
