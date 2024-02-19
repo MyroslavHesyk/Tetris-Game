@@ -42,7 +42,7 @@ function generateTetramino(){
      // there is we retern figure from index
     const name = TETROMINO_NAMES[0];
     const matrix = TETROMINOES[name];
-    console.log(matrix)
+    //console.log(matrix)
      // console.log(matrix);
     tetromino = {
         name,
