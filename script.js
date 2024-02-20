@@ -144,6 +144,33 @@ function onKeyDown(event){
     }
     draw()
 }
+document.addEventListener('DOMContentLoaded', function() {
+    const btnUP = document.getElementById('btn-UP');
+    const btnLEFT = document.getElementById('btn-LEFT');
+    const btnDOWN= document.getElementById('btn-DOWN');
+    const btnRIGHT = document.getElementById('btn-RIGHT');
+  
+   /*  btnUP.addEventListener('click', function() {
+        moveTetraminoUP();
+        draw();
+    }); */
+    btnLEFT.addEventListener('click', function() {
+        moveTetraminoLeft();
+        draw();
+    });
+    btnDOWN.addEventListener('click', function() {
+        moveTetraminoDown();
+        draw();
+    });
+    btnRIGHT.addEventListener('click', function() {
+        moveTetraminoRight();
+        draw();
+    });
+   
+  
+   
+  });
+  
 
 function moveTetraminoDown(){
     tetromino.row +=1;
