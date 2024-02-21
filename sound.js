@@ -12,8 +12,8 @@ document.addEventListener("DOMContentLoaded", function () {
     function updateSoundButton() {
       soundButton.innerHTML = isSoundOn ? '<i class="fas fa-volume-up"></i> ' : '<i class="fas fa-volume-mute"></i> ';
 
-      soundButton.classList.toggle("sound-on", isSoundOn);
-      soundButton.classList.toggle("sound-off", !isSoundOn);
+      /* soundButton.classList.toggle("sound-on", isSoundOn);
+      soundButton.classList.toggle("sound-off", !isSoundOn); */
     }
   
     function toggleSound() {

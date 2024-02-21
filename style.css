@@ -1,5 +1,6 @@
 * {
     margin: 0;
+    padding: 0;
 }
 @font-face {
     font-family: 'Better VCR';
@@ -10,12 +11,15 @@ a {
   text-decoration: none;
   color:rgb(167, 167, 167);
 }
-
+html {
+  height: 100%;
+}
 body {
     background: 
         linear-gradient(135deg, rgb(167, 167, 167), rgb(215, 215, 215));
     /* background: url(./assets/img/gray-background.jpg) no-repeat; */
     background-position: center;
+  
     height: 100%;
     color: #0F0F0F;
     box-sizing: border-box;
@@ -28,19 +32,13 @@ header {
   justify-content: center;
 }
 
-.main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    height: 85%;
-}
-.main-text {
+
+.header-text {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
     border: 1vh outset  #0F0F0F ;
     padding: 25px;
     margin: 10px 0 20px 0; 
@@ -57,10 +55,29 @@ header {
     font-family: 'Pixelify Sans';
     font-size: 3vh;
 }
+.main {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 85%;
+}
+.main-text {
+  display: block;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+    border: 1vh outset  #0F0F0F ;
+    padding: 25px;
+    margin: 10px 0 20px 0; 
+}
 .grid {
     background-color:  #40423F;
     padding: 0.5vh;
     display: grid;
+    margin: 0 2vh;
     grid-template-columns: repeat(10,auto);
     gap: 0.5vh;
     /* border-radius: 0.5vh; */
@@ -68,8 +85,8 @@ header {
 }
 
 .grid > div {
-    height: min(2vh, 4vw);
-    width: min(2vh, 4vw);
+    height: 3vh;
+    width: 3vh;
     background: #0F0F0F;
     /* border-radius: 0.3vh; */
     border: #0F0F0F .3vh outset;
@@ -225,19 +242,58 @@ header {
     margin: 2px 10px;
     background: #0F0F0F;
   }
-  .btn-GITHUB::before, .btn-RELOAD::before,
-  .btn-GITHUB::after, .btn-RELOAD::after {
+  .sound-off::before, .btn-RELOAD::before,
+  .sound-off::after, .btn-RELOAD::after {
     content: "";
     display: block;
     position: absolute;
     background: #40423F;
     z-index: -1;
   }
- .btn-GITHUB, .btn-RELOAD {
+ .sound-off, .btn-RELOAD {
+  
     padding: 5px 3px;
     margin: 2px 10px;
     background: #40423F;
     cursor: pointer;
+    font-size: 4vh;
   }
 
+
+  @media (max-width: 768px) {
+    header {
+  
+      display: block;
+      
+    }
+    .main {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+  }
+  .header-text {
+      padding: 1vh;
+      margin: 1px ; 
+  }
+  .grid {
+    background-color:  #40423F;
+    padding: 0.5vh;
+    display: grid;
+    margin: 0 2vh;
+    grid-template-columns: repeat(10,auto);
+    gap: 0.2vh;
+    /* border-radius: 0.5vh; */
+    max-height: 1000px;
+}
+
+.grid > div {
+    height: 2vh;
+    width: 2vh;
+    background: #0F0F0F;
+    /* border-radius: 0.3vh; */
+    border: #0F0F0F .3vh outset;
+}
+  }
   
