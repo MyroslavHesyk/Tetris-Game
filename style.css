@@ -12,7 +12,7 @@ body {
         linear-gradient(135deg, rgb(167, 167, 167), rgb(215, 215, 215));
     /* background: url(./assets/img/gray-background.jpg) no-repeat; */
     background-position: center;
-    height: 200vh;
+    height: 100%;
     color: #0F0F0F;
     
 }

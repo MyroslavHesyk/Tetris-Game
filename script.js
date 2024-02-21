@@ -29,10 +29,10 @@ const TETROMINOES = {
         [0,0,0]
     ],
     'I': [
-        [0,1,0],
-        [0,1,0],
-        [0,1,0],
-        [0,1,0]
+        [0,0,0,0],
+        [1,1,1,1],
+        [0,0,0,0],
+        [0,0,0,0]
     ],
     'S': [
         [0,1,1],
@@ -72,13 +72,14 @@ function generateTetramino(){
      const randomIndex = Math.floor(Math.random() * TETROMINO_NAMBERS.length);
     const name = TETROMINO_NAMES[randomIndex];
     const matrix = TETROMINOES[name];
+    const col = Math.floor((playField[0].length-matrix[0].length)/2);
     //console.log(matrix)
      // console.log(matrix);
     tetromino = {
         name,
         matrix,
-        row: 2,
-        column: 4
+        row: 0,
+        column: col
     }
 }
 generatePlayField()
@@ -183,5 +184,4 @@ function moveTetraminoLeft(){
 function moveTetraminoRight(){
     tetromino.column +=1;
 }
-
 
