@@ -185,3 +185,8 @@ function moveTetraminoRight(){
     tetromino.column +=1;
 }
 
+/* RELOAD BUTTON */
+let reloadButton = document.getElementById("btn-RELOAD");
+    reloadButton.addEventListener("click", function() {
+      location.reload();
+    });

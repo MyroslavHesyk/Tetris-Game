@@ -6,6 +6,10 @@
     src: url(./assets/fonts/better-vcr.otf);
    
 }
+a {
+  text-decoration: none;
+  color:rgb(167, 167, 167);
+}
 
 body {
     background: 
@@ -14,26 +18,40 @@ body {
     background-position: center;
     height: 100%;
     color: #0F0F0F;
-    
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column; 
 }
+header {
+  height: 15%;
+  display: flex;
+  justify-content: center;
+}
+
 .main {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
+    height: 85%;
 }
 .main-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
     border: 1vh outset  #0F0F0F ;
-    
-    padding: 2vw;
-    margin-top: 2vh;
-    margin-bottom: 2vh;
+    padding: 25px;
+    margin: 10px 0 20px 0; 
 }
 .title {
     font-family: 'Better VCR';
     font-size: 4vh;
     
+}
+.reload, .github{
+  font-size: 4.5vh;
 }
 .subtitle {
     font-family: 'Pixelify Sans';
@@ -46,11 +64,12 @@ body {
     grid-template-columns: repeat(10,auto);
     gap: 0.5vh;
     /* border-radius: 0.5vh; */
+    max-height: 1000px;
 }
 
 .grid > div {
-    height: min(4vh, 7vw);
-    width: min(4vh, 7vw);
+    height: min(2vh, 4vw);
+    width: min(2vh, 4vw);
     background: #0F0F0F;
     /* border-radius: 0.3vh; */
     border: #0F0F0F .3vh outset;
@@ -206,6 +225,19 @@ body {
     margin: 2px 10px;
     background: #0F0F0F;
   }
-
+  .btn-GITHUB::before, .btn-RELOAD::before,
+  .btn-GITHUB::after, .btn-RELOAD::after {
+    content: "";
+    display: block;
+    position: absolute;
+    background: #40423F;
+    z-index: -1;
+  }
+ .btn-GITHUB, .btn-RELOAD {
+    padding: 5px 3px;
+    margin: 2px 10px;
+    background: #40423F;
+    cursor: pointer;
+  }
 
   

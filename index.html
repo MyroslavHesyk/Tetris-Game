@@ -15,22 +15,29 @@
     <!-- <iframe src="./assets/audio/tetris.mp3" allow="autoplay" style="display:none" id="iframeAudio">
     </iframe>  -->
     
-
-    <div class="sound">
-             <button id="soundButton" class="sound-off pixel"><i class="fas fa-volume-mute"></i></button>
-        </div>
-    <div class="main">
+    <header>
+        <div class="sound">
+            <button id="soundButton" class="sound-off pixel"><i class="fas fa-volume-mute"></i></button>
+        </div> 
         <div class="main-text">
             <h1 class="title">Tetris original</h1>
             <h3 class="subtitle">by Myroslav Hesyk</h3>
         </div>
+    </header>
+    
+    <div class="main">
+       
         <div class="grid">
             <!-- <div></div>
             <div></div>
             <div></div> -->
         </div>
         <div class="buttons">
+            <div class="buttons-line">
+            <button id="btn-RELOAD" class="btn-RELOAD btn-pixel"><i class="fa-solid fa-arrow-rotate-right reload"></i></button>
             <button id="btn-UP" class="btn-UP btn-pixel"><i class="fa-solid fa-square-caret-up"></i></button>
+            <button id="btn-GITHUB" class="btn-GITHUB btn-pixel"><a href="https://github.com/MyroslavHesyk/Tetris" target="_blank"><i class="fa-brands fa-github github"></i></a></button>
+           </div>
             <div class="buttons-line">
                 <button id="btn-LEFT" class="LEFT btn-pixel"><i class="fa-solid fa-square-caret-left"></i></button>
                 <button id="btn-DOWN" class="btn-DOWN btn-pixel"><i class="fa-solid fa-square-caret-down"></i></button>
