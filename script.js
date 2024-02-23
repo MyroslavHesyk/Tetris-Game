@@ -59,7 +59,7 @@ function generatePlayField(){
     // console.table(playfield);
     
 }
-console.log(Math.random())
+//console.log(Math.random())
 
 function generateTetramino(){
      // there is we retern figure from index
