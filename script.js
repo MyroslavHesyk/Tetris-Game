@@ -1,8 +1,3 @@
-// 1. Додати нові фігури
-// 2. Стилізувати нові фігури
-// 3. Додати функцію рандому котра буде поветати випадкову фігуру
-// 4. Центрувати фігуру незалежно від ширини
-
 const PLAYFIELD_COLUMNS = 10;
 const PLAYFIELD_ROWS = 20;
 const TETROMINO_NAMES = ['O', 'J','L','T','I','S','Z'];
@@ -75,13 +70,29 @@ function generateTetramino(){
     const col = Math.floor((playField[0].length-matrix[0].length)/2);
     //console.log(matrix)
      // console.log(matrix);
+    const rowTetro = -2;
     tetromino = {
         name,
         matrix,
-        row: 0,
+        row: rowTetro,
         column: col
     }
 }
+
+function placeTetramino(){
+    const matrixSize = tetromino.matrix.length;
+    for(let row =0; row<matrixSize; row++){
+        for(let column =0; column< matrixSize; column++){
+            if(tetromino.matrix[row][column]){
+            playField[tetromino.row + row][tetromino.column + column]=tetromino.name;
+            }
+        }
+    }
+
+    generateTetramino()
+
+}
+
 generatePlayField()
 
 generateTetramino()
@@ -95,6 +106,7 @@ function drawPlayField(){
     for(let row=0; row < PLAYFIELD_ROWS ; row++){
         for (let column =0; column < PLAYFIELD_COLUMNS; column++) {
             if(playField[row][column]==0) continue;
+
             const name = playField[row][column];
             const cellIndex = convertPositionToIndex(
                 row, column 
@@ -110,11 +122,13 @@ function drawTetramino(){
 
     for (let row =0; row < tetrominoMatrixSize; row++) {
         for (let column =0; column < tetrominoMatrixSize; column++) {
+                
                 if(!tetromino.matrix[row][column]) continue;
                 const cellIndex = convertPositionToIndex(
                     tetromino.row + row, 
                     tetromino.column + column
                 )
+                
                 cells[cellIndex].classList.add(name);
         } //   column
     }  // row
@@ -129,10 +143,35 @@ function draw(){
     drawPlayField()
     drawTetramino()
 }
+
+/* let showRotated = [
+    [1,2,3],
+    [4,5,6],
+    [7,8,9]
+]
+ */
+function rotateTetramino(){
+    const oldMartix = tetromino.matrix;
+    const rotatedMatrix = rotateMatrix(tetromino.matrix);
+   /*  showRotated = rotateMatrix(showRotated ); */
+    tetromino.matrix = rotatedMatrix;
+    if (!isValid()){
+        tetromino.matrix = oldMartix;
+    }
+}
+
 draw();
+
+function rotate (){
+
+}
+
 document.addEventListener('keydown', onKeyDown)
 function onKeyDown(event){
     switch(event.key){
+        case 'ArrowUp':
+            rotateTetramino()
+            break
         case 'ArrowDown':
             moveTetraminoDown()
             break
@@ -151,10 +190,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const btnDOWN= document.getElementById('btn-DOWN');
     const btnRIGHT = document.getElementById('btn-RIGHT');
   
-   /*  btnUP.addEventListener('click', function() {
-        moveTetraminoUP();
+    btnUP.addEventListener('click', function() {
+        rotateTetramino()
         draw();
-    }); */
+    });
     btnLEFT.addEventListener('click', function() {
         moveTetraminoLeft();
         draw();
@@ -173,16 +212,45 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   
 
+
+function rotateMatrix(matrixTetramino){
+    const N = matrixTetramino.length;
+    const rotateMatrix = [];
+    for(let i=0; i<N; i++){
+        rotateMatrix[i]=[]
+        for(let j=0; j<N; j++){
+            rotateMatrix[i][j]=matrixTetramino[N - j -1][i]
+        }
+    }
+
+
+    return rotateMatrix
+
+}
+
 function moveTetraminoDown(){
     tetromino.row +=1;
+    if(!isValid()){
+        tetromino.row -=1;
+        placeTetramino()
+    }
 }
 
 function moveTetraminoLeft(){
     tetromino.column -=1;
+    /* Колізія  */
+    if(!isValid()){
+        tetromino.column +=1;
+    }
 }
 
 function moveTetraminoRight(){
     tetromino.column +=1;
+    /* Колізія  */
+    if(!isValid()){
+        tetromino.column -=1;
+    }
+   
 }
 
 /* RELOAD BUTTON */
@@ -190,3 +258,48 @@ let reloadButton = document.getElementById("btn-RELOAD");
     reloadButton.addEventListener("click", function() {
       location.reload();
     });
+/* Колізія  */
+function isValid(){
+    const matrixSize = tetromino.matrix.length;
+    for(let row =0; row<matrixSize; row++){
+        for(let column =0; column< matrixSize; column++){
+            
+            if(isOutsiteOfGameboard(row,column)){ return false;}
+            if (hasCollisions(row,column)){ return false;}
+        }
+    }
+    return true;
+}
+
+function isOutsiteOfGameboard(row, column){
+    return tetromino.matrix[row][column] && 
+        (
+        tetromino.column + column < 0 
+        || tetromino.column + column >= PLAYFIELD_COLUMNS
+        || tetromino.row + row >= PLAYFIELD_ROWS
+        );
+};
+
+function hasCollisions(row, column){
+    return tetromino.matrix[row][column] 
+        && playField[tetromino.row + row][tetromino.column + column];
+}
+
+
+
+/* function clearField(){
+    for(let row = PLAYFIELD_ROWS - 1; row > 0; row--){
+        let r = 0;
+        for(let column = 0; column < PLAYFIELD_COLUMNS; column++){
+            if (playfield[row][column]) {r++};
+        }
+        if (r == PLAYFIELD_COLUMNS){
+            console.log('CLEAR');
+            playfield[row].fill(0);
+            for(let row1 = row - 1; row1 > 0; row1--){
+                playfield[row1 + 1] = playfield[row1];
+            }
+            row++;
+        }
+    }
+}; */
