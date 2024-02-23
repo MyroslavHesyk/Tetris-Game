@@ -70,7 +70,7 @@ function generateTetramino(){
     const col = Math.floor((playField[0].length-matrix[0].length)/2);
     //console.log(matrix)
      // console.log(matrix);
-   // const rowTetro = -2;
+     const row = -2;
     tetromino = {
         name,
         matrix,
@@ -228,13 +228,23 @@ function rotateMatrix(matrixTetramino){
 
 }
 
-function moveTetraminoDown(){
-    tetromino.row +=1;
-    if(!isValid()){
-        tetromino.row -=1;
-        placeTetramino()
+function moveTetraminoDown() {
+    tetromino.row += 1;
+    if (!isValid()) {
+        tetromino.row -= 1;
+        placeTetramino();
     }
+    draw(); 
 }
+let tetraminoSpeed = 700;
+document.addEventListener("DOMContentLoaded", function () {
+    function moveDown() {
+        moveTetraminoDown();
+        setTimeout(moveDown, tetraminoSpeed);
+    }
+
+    moveDown();
+});
 
 function moveTetraminoLeft(){
     tetromino.column -=1;

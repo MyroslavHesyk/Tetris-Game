@@ -90,29 +90,37 @@ header {
     background: #0F0F0F;
     /* border-radius: 0.3vh; */
     border: #0F0F0F .3vh outset;
+   
+    
 }
 
 .grid > .O {
     background: #FEE904;
-  
+    transition: 0.2s;
 }
 .grid > .J {
     background: #027FFD;
+    transition: 0.2s;
 }
 .grid > .T {
     background: #A900FD;
+    transition: 0.2s;
 }
 .grid > .I {
     background: #00F0F0;
+    transition: 0.2s;
 }
 .grid > .L {
     background: #F0A100;
+    transition: 0.2s;
 }
 .grid > .S {
     background: #55FE01;
+    transition: 0.2s;
 }
 .grid > .Z {
     background: #FE0056;
+    transition: 0.2s;
 }
 
 
