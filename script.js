@@ -236,23 +236,15 @@ function moveTetraminoDown() {
     }
     draw(); 
 }
-let tetraminoSpeed = 700;
-document.addEventListener("DOMContentLoaded", function () {
-    function moveDown() {
-        moveTetraminoDown();
-        setTimeout(moveDown, tetraminoSpeed);
-    }
 
-    moveDown();
-});
 
 function moveTetraminoLeft(){
     tetromino.column -=1;
     /* Колізія  */
     if(!isValid()){
         tetromino.column +=1;
-    }
-}
+    } 
+} 
 
 function moveTetraminoRight(){
     tetromino.column +=1;
@@ -262,7 +254,31 @@ function moveTetraminoRight(){
     }
    
 }
+let tetraminoSpeed = 700;
+document.addEventListener("DOMContentLoaded", function () {
+    function moveDown() {
+        moveTetraminoDown();
+        setTimeout(moveDown, tetraminoSpeed);
+    }
 
+    moveDown();
+
+    function handleOrientation(event) {
+        const gamma = event.gamma; // Значення для руху вліво-вправо
+
+        // Визначення порогу для визначення руху вліво або вправо
+        const threshold = 10;
+
+        if (gamma > threshold) {
+            moveTetraminoRight();
+        } else if (gamma < -threshold) {
+            moveTetraminoLeft();
+        }
+    }
+
+    // Отримання гіроскопічних даних при нахилі пристрою
+    window.addEventListener('deviceorientation', handleOrientation);
+});
 /* RELOAD BUTTON */
 let reloadButton = document.getElementById("btn-RELOAD");
     reloadButton.addEventListener("click", function() {
