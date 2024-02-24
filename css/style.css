@@ -52,6 +52,9 @@ header {
     font-family: 'Pixelify Sans';
     font-size: 3vh;
 }
+.subtitle a {
+  color: #0F0F0F;
+}
 .reload, .github{
   font-size: 4.5vh;
 }
@@ -209,6 +212,17 @@ header {
     display: flex;
     flex-direction: row;
 }
+.about-line {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 20px;
+}
+.about-line a {
+  color: rgb(167, 167, 167);
+}
+
   .btn-pixel {
     position: relative;
      /*top: 10px;
@@ -216,7 +230,7 @@ header {
     display: block;
     font-size: 5vh;
     color: rgb(167, 167, 167);
-    z-index: 1000; /* Значення z-index робимо великим, щоб кнопка була над іншими елементами */
+    z-index: 1; /* Значення z-index робимо великим, щоб кнопка була над іншими елементами */
   }
   
   .btn-pixel::before,
@@ -288,11 +302,39 @@ header {
 }
 
 
+/* MENU */
 
-
-
-
-
+#infoDialog {
+  display: none;
+  position: relative;
+  z-index: 10;
+}
+#infoToggle {
+  cursor: pointer;
+  color: #333;
+  font-size: 24px;
+}
+#aboutToggle {
+  cursor: pointer;
+  color: #333;
+}
+.title-info {
+  font-family: 'Better VCR';
+  text-align: center;
+}
+.subtitle-info {
+  font-family: 'Better VCR';
+    font-size: 12px;
+    margin-top: 10px;
+}
+.ul-info {
+  font-family: 'Better VCR';
+    font-size: 12px;
+    margin: 10px;
+}
+/* .ul-info b {
+  font-size: 14px;
+} */
 
 
 

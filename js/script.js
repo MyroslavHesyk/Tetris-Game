@@ -75,7 +75,7 @@ function generateTetramino(){
     const col = Math.floor((playField[0].length-matrix[0].length)/2);
     //console.log(matrix)
      // console.log(matrix);
-     const row = -2;
+     const row = name === 'I' ? -1 : -2;;
     tetromino = {
         name,
         matrix,
