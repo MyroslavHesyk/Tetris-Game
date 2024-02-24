@@ -48,13 +48,14 @@ header {
     font-size: 4vh;
     
 }
-.reload, .github{
-  font-size: 4.5vh;
-}
 .subtitle {
     font-family: 'Pixelify Sans';
     font-size: 3vh;
 }
+.reload, .github{
+  font-size: 4.5vh;
+}
+
 .main {
     display: flex;
     flex-direction: row-reverse;
@@ -63,15 +64,18 @@ header {
     text-align: center;
     height: 85%;
 }
-.main-text {
+.main-score-block{
   display: block;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  border: 1vh outset  #0F0F0F ;
+}
+.main-score {
   text-align: center;
-    border: 1vh outset  #0F0F0F ;
-    padding: 25px;
-    margin: 10px 0 20px 0; 
+    border: 0.5vh inset  #0F0F0F ;
+    padding: 5px;
+    margin: 10px ; 
 }
 .grid {
     background-color:  #40423F;
@@ -191,14 +195,7 @@ header {
     padding: 10px 10px;
     background: #0F0F0F;
   }
-  @media only screen and (max-width: 768px) {
-    .pixel {
-        position: relative; 
-        top: 10px;
-        right: -320px;
-        margin-top: 0;
-    }
-  }
+ 
 /* BUTTONS */
 .buttons {
     display: flex;
@@ -267,19 +264,73 @@ header {
     font-size: 4vh;
   }
 
+/* game-statistics */
+  .game-statistics {
+   /*  background-color: darkgray; */
+}
+.score-title {
+    font-family:  'Better VCR';
+    font-size: 2vh;
+    color: #000;
+    text-align: right;
+}
+.score-value {
+    font-family: 'Pixelify Sans';
+    font-size: 4vh;
+    color: #000;
+    text-align: end;
+}
+.score-value > span {
+    opacity: 0.5;
+}
+.score-block {
+  margin-bottom: 0.5vh;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
   @media (max-width: 768px) {
-    header {
+   /*  header {
   
       display: block;
       
-    }
+    } */
+    .pixel {
+      position: relative; 
+      top: 10px;
+      right: -320px;
+      margin-top: 0;
+  }
     .main {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
+  }
+  .main-score-block{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border: 0.6vh outset  #0F0F0F ;
+    margin: 5px auto;
+  }
+  .main-score {
+    text-align: center;
+      border: 0.5vh inset  #0F0F0F ;
+      padding: 5px;
+      margin: 5px ; 
   }
   .header-text {
       padding: 1vh;
@@ -302,6 +353,29 @@ header {
     background: #0F0F0F;
     /* border-radius: 0.3vh; */
     border: #0F0F0F .3vh outset;
+}
+.score-title {
+  font-size: 1.5vh;
+  text-align: center;
+}
+.score-value {
+  font-size: 1.5vh;
+  text-align: center;
+}
+.score-block {
+  margin-bottom: 0.5vh;
+}
+.header-text {
+    border: 1vh outset  #0F0F0F ;
+    padding: 10px;
+    margin: 10px; 
+}
+.title {
+    font-size: 3vh;
+}
+.subtitle {
+    font-family: 'Pixelify Sans';
+    font-size: 2vh;
 }
   }
   

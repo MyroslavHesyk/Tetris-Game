@@ -1,3 +1,8 @@
+// ДЗ №2
+// 1. Поставити const rowTetro = -2; прописати код щоб працювало коректно //НЕВИХОДИТЬ
+// 2. Зверстати поле для розрахунку балів гри
+// 3. Реалізувати самостійний рух фігур до низу //ГОТОВО
+// 4. Прописати логіку і код розрахунку балів гри (1 ряд = 10; 2 ряди = 30; 3 ряди = 50; 4 = 100)
 const PLAYFIELD_COLUMNS = 10;
 const PLAYFIELD_ROWS = 20;
 const TETROMINO_NAMES = ['O', 'J','L','T','I','S','Z'];
@@ -263,21 +268,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     moveDown();
 
-    function handleOrientation(event) {
-        const gamma = event.gamma; // Значення для руху вліво-вправо
-
-        // Визначення порогу для визначення руху вліво або вправо
-        const threshold = 10;
-
-        if (gamma > threshold) {
-            moveTetraminoRight();
-        } else if (gamma < -threshold) {
-            moveTetraminoLeft();
-        }
-    }
-
-    // Отримання гіроскопічних даних при нахилі пристрою
-    window.addEventListener('deviceorientation', handleOrientation);
+    
 });
 /* RELOAD BUTTON */
 let reloadButton = document.getElementById("btn-RELOAD");
@@ -311,7 +302,26 @@ function hasCollisions(row, column){
         && playField[tetromino.row + row][tetromino.column + column];
 }
 
+document.addEventListener("DOMContentLoaded", function () {
+    var stopwatchElement = document.getElementById('stopwatch');
+    var seconds = 0;
+    var minutes = 0;
 
+    setInterval(function () {
+        seconds++;
+        if (seconds === 60) {
+            seconds = 0;
+            minutes++;
+        }
+
+        var formattedTime = pad(minutes) + ':' + pad(seconds);
+        stopwatchElement.innerHTML = formattedTime;
+    }, 1000);
+
+    function pad(value) {
+        return value < 10 ? '0' + value : value;
+    }
+});
 
 /* function clearField(){
     for(let row = PLAYFIELD_ROWS - 1; row > 0; row--){
