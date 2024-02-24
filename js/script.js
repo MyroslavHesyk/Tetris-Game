@@ -75,11 +75,11 @@ function generateTetramino(){
     const col = Math.floor((playField[0].length-matrix[0].length)/2);
     //console.log(matrix)
      // console.log(matrix);
-     const row = name === 'I' ? -1 : -2;;
+     const row = -2;
     tetromino = {
         name,
         matrix,
-        row: 0,
+        row,
         column: col
     }
 }
@@ -133,8 +133,10 @@ function drawTetramino(){
                     tetromino.row + row, 
                     tetromino.column + column
                 )
+                /* щоб з'являлося зверху */
+                if (cellIndex>=0) cells[cellIndex].classList.add(name);
                 
-                cells[cellIndex].classList.add(name);
+                /* cells[cellIndex].classList.add(name); */
         } //   column
     }  // row
 }
@@ -298,8 +300,10 @@ function isOutsiteOfGameboard(row, column){
 };
 
 function hasCollisions(row, column){
+    if (tetromino.row >=0){
     return tetromino.matrix[row][column] 
         && playField[tetromino.row + row][tetromino.column + column];
+    }
 }
 
 document.addEventListener("DOMContentLoaded", function () {
