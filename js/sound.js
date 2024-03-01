@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     const soundButton = document.getElementById("soundButton");
     let isSoundOn = false;
-    let audio = new Audio("./assets/audio/tetris.mp3"); // Замініть "sound.mp3" на шлях до вашого аудіофайлу
+    let audio = new Audio("./assets/audio/tetris.mp3"); // Замініть на шлях до вашого аудіофайлу
   
     soundButton.addEventListener("click", function () {
       isSoundOn = !isSoundOn;

@@ -335,8 +335,34 @@ header {
 } */
 
 
+/* overlay */
 
-
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  background-color: #40423f9b;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.btn-overlay {
+    font-family: 'Better VCR';
+    font-size: 4vh;
+    text-align: center;
+    border: 1vh outset  #0F0F0F ;
+    padding: 25px;
+    margin: 10px 0 20px 0; 
+    background-color: rgb(210, 210, 210);
+    cursor: pointer;
+    box-shadow: -9px 11px 5px 0px rgba(0,0,0,0.43);
+   -webkit-box-shadow: -9px 11px 5px 0px rgba(0,0,0,0.43);
+   -moz-box-shadow: -9px 11px 5px 0px rgba(0,0,0,0.43);
+}
 
 
   @media (max-width: 768px) {
