@@ -1,6 +1,11 @@
 * {
     margin: 0;
     padding: 0;
+    user-select: none;
+}
+button:focus {
+  outline: none; 
+  
 }
 @font-face {
     font-family: 'Better VCR';
@@ -79,6 +84,7 @@ header {
     border: 0.5vh inset  #0F0F0F ;
     padding: 5px;
     margin: 10px ; 
+    width: 100px;
 }
 .grid {
     background-color:  #40423F;
@@ -286,14 +292,11 @@ header {
     color: #000;
     text-align: right;
 }
-.score-value {
+.score-value, .level-value, .time-value {
     font-family: 'Pixelify Sans';
     font-size: 4vh;
     color: #000;
     text-align: end;
-}
-.score-value > span {
-    opacity: 0.5;
 }
 .score-block {
   margin-bottom: 0.5vh;
@@ -307,15 +310,40 @@ header {
   position: relative;
   z-index: 10;
 }
-#infoToggle {
-  cursor: pointer;
-  color: #333;
-  font-size: 24px;
-}
-#aboutToggle {
-  cursor: pointer;
-  color: #333;
-}
+          #infoToggle,
+          #aboutToggle {
+            cursor: pointer;
+            color: #525252;
+            font-size: 24px;
+            position: relative;
+            overflow: hidden;
+          }
+          #infoToggle:hover,
+          #aboutToggle:hover {
+            color: #333;
+            transition:  0.3s ease-in-out;
+          }
+          #infoToggle::after,
+          #aboutToggle::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #333;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease-in-out;
+          }
+
+          #infoToggle:hover::after,
+          #aboutToggle:hover::after {
+            transform: scaleX(1);
+          }
+
+
+
 .title-info {
   font-family: 'Better VCR';
   text-align: center;
@@ -337,7 +365,7 @@ header {
 
 /* overlay */
 
-.overlay {
+.gameOver {
   position: fixed;
   top: 0;
   left: 0;
@@ -345,23 +373,43 @@ header {
   height: 100%;
   z-index: 100;
   background-color: #40423f9b;
-  display: none;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
+  
 }
-.btn-overlay {
-    font-family: 'Better VCR';
-    font-size: 4vh;
-    text-align: center;
-    border: 1vh outset  #0F0F0F ;
+.content-gameOver {
+  border: 1vh outset  #0F0F0F ;
     padding: 25px;
+    background-color: rgb(210, 210, 210);
+    font-family: 'Better VCR';
+}
+.content-gameOver .subtitle {
+  
+  font-size: 4vh;
+}
+.btn-gameOver {
+    font-family: 'Better VCR';
+    font-size: 2vh;
+    text-align: center;
+    padding: 10px;
     margin: 10px 0 20px 0; 
     background-color: rgb(210, 210, 210);
     cursor: pointer;
-    box-shadow: -9px 11px 5px 0px rgba(0,0,0,0.43);
-   -webkit-box-shadow: -9px 11px 5px 0px rgba(0,0,0,0.43);
-   -moz-box-shadow: -9px 11px 5px 0px rgba(0,0,0,0.43);
+    box-shadow: -5px 5px 5px 0px rgba(0,0,0,0.43);
+   -webkit-box-shadow: -5px 5px 5px 0px rgba(0,0,0,0.43);
+   -moz-box-shadow: -5px 5px 5px 0px rgba(0,0,0,0.43);
+   transition: 0.5s ;
+}
+.btn-gameOver:hover {
+  
+   
+ 
+  box-shadow: -8px 8px 5px 0px rgba(0, 0, 0, 0.8);
+ -webkit-box-shadow: -8px 8px 5px 0px rgba(0,0,0,0.8);
+ -moz-box-shadow: -8px 8px 5px 0px rgba(0,0,0,0.8);
 }
 
 
@@ -397,6 +445,7 @@ header {
       border: 0.5vh inset  #0F0F0F ;
       padding: 5px;
       margin: 5px ; 
+      width: auto;
   }
   .header-text {
       padding: 1vh;
@@ -424,7 +473,7 @@ header {
   font-size: 1.5vh;
   text-align: center;
 }
-.score-value {
+.score-value, .level-value, .time-value {
   font-size: 1.5vh;
   text-align: center;
 }

@@ -22,7 +22,7 @@
         </div>  -->
         <div class="header-text">
             <h1 class="title">Tetris original</h1>
-            <h3 class="subtitle"><span id="aboutToggle">by Myroslav Hesyk</span>  <span id="infoToggle">| info</span></h3>
+            <h3 class="subtitle"><span id="aboutToggle"><i class="fa-regular fa-address-card"></i>  by Myroslav Hesyk   </span> | <span id="infoToggle"> info  <i class="fa-solid fa-book-open"></i></span></h3>
         </div>
     </header>
     
@@ -37,13 +37,13 @@
         <div class="main-score">
             <div class="score-block">
                 <p class="score-title">Level</p>
-                <div class="score-value" data-type="lvl" data-meaning="1">1</div>
+                <div class="score-value level-value" data-type="lvl" data-meaning="1">1</div>
             </div>
         </div>
         <div class="main-score">
             <div class="score-block">
                 <p class="score-title">Time</p>
-                <div class="score-value" id="stopwatch">
+                <div class="time-value" id="stopwatch">
                     <span>00:00</span>
                 </div>
             </div>
@@ -56,7 +56,7 @@
         </div>
         <div class="buttons">
             <div class="buttons-line">
-            <button id="btn-RELOAD" class="btn-RELOAD btn-pixel"><i class="fa-solid fa-trash reload"></i></button>
+            <button id="btn-RELOAD" class="btn-RELOAD btn-pixel" ><i class="fa-solid fa-trash reload"></i></button>
             <button id="btn-UP" class="btn-UP btn-pixel"><i class="fa-solid fa-square-caret-up "></i></button>
             <!-- <button id="btn-GITHUB" class="btn-GITHUB btn-pixel"><a href="https://github.com/MyroslavHesyk/Tetris" target="_blank"><i class="fa-brands fa-github github"></i></a></button> -->
             <button id="soundButton" class="sound-off btn-pixel"><i class="fas fa-volume-mute"></i></a></button>
@@ -64,7 +64,7 @@
            </div>
             <div class="buttons-line">
                 <button id="btn-LEFT" class="LEFT btn-pixel"><i class="fa-solid fa-square-caret-left"></i></button>
-                <button id="btn-DOWN" class="btn-DOWN btn-pixel"><i class="fa-solid fa-square-caret-down"></i></button>
+                <button id="btn-DOWN" class="btn-DOWN btn-pixel" tabindex="-1"><i class="fa-solid fa-square-caret-down"></i></button>
                 <button id="btn-RIGHT" class="btn-RIGHT btn-pixel"><i class="fa-solid fa-square-caret-right"></i></button>
             </div>
        </div>
@@ -97,8 +97,23 @@
             <a class=" btn-pixel" href="https://www.linkedin.com/in/myroslav-hesyk/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
         </div>
     </div>
-    <div class="overlay">
-        <button class="btn-overlay">Restart</button>
+    <div class="gameOver">
+        <div class="content-gameOver"> 
+            <h3 class="subtitle"> GAME OVER </h3>
+            <div>
+                Result
+                Score: <span id="score-result">0</span> <br>
+                Level: <span id="level-result">0</span> <br>
+                Time: <span id="time-result">00:00</span> <br>
+            </div>
+            <button class="btn-gameOver">Restart</button>
+        </div>
+    </div>
+
+    <div class="paused">
+        <h3 class="subtitle">  PAUSED  </h3>
+        <button>Resume</button>
+        <button>How to play</button>
     </div>
     
 
@@ -108,5 +123,6 @@
     <script src="./js/script.js"></script>
     <script src="./js/sound.js"></script>
     <script src="./js/menu.js"></script>
+    <script src="./js/animation.js"></script>
 </body>
 </html>

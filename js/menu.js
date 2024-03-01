@@ -6,15 +6,20 @@ $(document).ready(function () {
         autoOpen: false,
         modal: true,
         width: 400,
-        /* buttons: {
-            Close: function () {
-                $(this).dialog("close");
-            }
-        } */
+        show: {
+            effect: "fade", 
+            duration: 500 
+        },
+        hide: {
+            effect: "fade", 
+            duration: 500 
+        },
+        
     });
 
     infoToggle.click(function () {
         infoDialog.dialog("open");
+        tooglePauseGame()
     });
 
 
@@ -25,14 +30,29 @@ $(document).ready(function () {
         autoOpen: false,
         modal: true,
         width: 400,
-        /* buttons: {
-            Close: function () {
-                $(this).dialog("close");
-            }
-        } */
+        show: {
+            effect: "fade", 
+            duration: 500 
+        },
+        hide: {
+            effect: "fade", 
+            duration: 500 
+        },
     });
 
     aboutToggle.click(function () {
         aboutDialog.dialog("open");
+        tooglePauseGame()
     });
+
+
+    $("#closeDialogButton").on("click", function () {
+        closeAboutDialog();
+    });
+    
+    // Ваша функція для закриття діалогового вікна
+    function closeAboutDialog() {
+        isPaused = false; // Продовжити гру
+        aboutDialog.dialog("close");
+    }
 });

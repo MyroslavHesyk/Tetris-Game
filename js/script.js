@@ -1,18 +1,26 @@
-// ДЗ №2
-// 1. Поставити const rowTetro = -2; прописати код щоб працювало коректно //НЕВИХОДИТЬ
-// 2. Зверстати поле для розрахунку балів гри
-// 3. Реалізувати самостійний рух фігур до низу //ГОТОВО
-// 4. Прописати логіку і код розрахунку балів гри (1 ряд = 10; 2 ряди = 30; 3 ряди = 50; 4 = 100)
 const scoreElement = document.querySelector('.score-value');
-const PLAYFIELD_COLUMNS = 10;
-const PLAYFIELD_ROWS = 20;
+const scoreResultElement = document.querySelector('#score-result');
+const levelElement = document.querySelector('.level-value');
+const levelResultElement = document.querySelector('#level-result');
+const btnRestart = document.querySelector('#btn-RELOAD');
+const gameOverFild = document.querySelector('.gameOver');
+const btngameOver = document.querySelector('.btn-gameOver')
+const PLAYFIELD_COLUMNS = 10 ;
+const PLAYFIELD_ROWS = 20 ;
+let isGameOver = false ;
+let timedId = null ;
+let isPaused = false ;
+let playField ;
+let tetromino ;
+let score = 0 ;
+let level = 0;
+let tetromino_speed = 1000;
 const TETROMINO_NAMES = ['O', 'J','L','T','I','S','Z'];
 const TETROMINO_NAMBERS = [1,2,3,4,5,6,7];
 const TETROMINOES = {
     'O': [
         [1,1],
         [1,1],
-        
     ],
     'J': [
         [1,0,0],
@@ -47,30 +55,95 @@ const TETROMINOES = {
     ],
 }
 
+let cells;
+init();
+
+function init(){
+    score = 0;
+    scoreElement.innerHTML = 0;
+    level = 1;
+    levelElement.innerHTML = 1;
+    isGameOver = false;
+    generatePlayField();
+    generateTetramino();
+    cells = document.querySelectorAll('.grid div');
+    moveDown();
+    
+}
+
+btnRestart.addEventListener('click', function(){
+    document.querySelector('.grid').innerHTML = '';
+    gameOverFild.style.display = 'none';
+   
+    init();
+})
+btngameOver.addEventListener('click', function(){
+    document.querySelector('.grid').innerHTML = '';
+    gameOverFild.style.display = 'none';
+   
+    init();
+})
+
 function convertPositionToIndex(row, column){
     return row * PLAYFIELD_COLUMNS + column;
 }
-
-let playField;
-let tetromino;
-let score = 0;
 
 function countScore(destroyRows){
     switch(destroyRows){
         case 1:
             score += 10;
+            countLevel(score)
             break;
         case 2: 
             score += 25;
+            countLevel(score)
                 break;
         case 3: 
             score += 75;
+            countLevel(score)
                 break;
         case 4: 
             score += 100;
+            countLevel(score)
                 break;
     }
     scoreElement.innerHTML = score;
+    scoreResultElement.innerHTML = score;
+}
+
+function countLevel(score) {
+switch (true) {
+    case score >= 0 && score <= 10:
+        level = 1;
+        tetromino_speed = 1000;
+        break;
+    case score > 10 && score <= 35:
+        level = 2;
+        tetromino_speed = 800;
+        break;
+    case score > 35 && score <= 60:
+        level = 3;
+        tetromino_speed = 700;
+        break;
+    case score > 60 && score <= 85:
+        level = 4;
+        tetromino_speed = 600;
+        break;
+    case score > 85 && score <= 105:
+        level = 5;
+        tetromino_speed = 500;
+        break;
+    case score > 105 && score <= 110:
+        level = 6;
+        tetromino_speed = 450;
+        break;
+    case score > 110 && score <= 120:
+        level = 7;
+        tetromino_speed = 400;
+        break;    
+}
+    levelElement.innerHTML = level;
+    levelResultElement.innerHTML = level;
 }
 
 
@@ -109,6 +182,10 @@ function placeTetramino(){
     const matrixSize = tetromino.matrix.length;
     for(let row =0; row<matrixSize; row++){
         for(let column =0; column< matrixSize; column++){
+            if(isOutsideOfTopboard(row)){
+                isGameOver = true;
+                return;
+            }
             if(tetromino.matrix[row][column]){
             playField[tetromino.row + row][tetromino.column + column]=tetromino.name;
             }
@@ -119,6 +196,7 @@ function placeTetramino(){
     removeFillRows(filledRows);
     generateTetramino();
     countScore(filledRows.length);
+    // countLevel(score);
 
 }
 
@@ -131,7 +209,7 @@ function removeFillRows(filledRows){
 
 function dropRowsAbove(rowDelete){
     for(let row = rowDelete; row > 0; row--){
-        playField[row] = playfield[row - 1];
+        playField[row] = playField[row - 1];
     }
 
     playField[0] = new Array(PLAYFIELD_COLUMNS).fill(0);
@@ -158,11 +236,11 @@ function findFilledRows(){
     return fillRows;
 }
 
-generatePlayField()
-generateTetramino()
+// generatePlayField()
+// generateTetramino()
 
 
-const cells = document.querySelectorAll('.grid div');
+// const cells = document.querySelectorAll('.grid div');
 
 function drawPlayField(){
     //cells[15].classList.add('O');
@@ -186,7 +264,7 @@ function drawTetramino(){
     for (let row =0; row < tetrominoMatrixSize; row++) {
         for (let column =0; column < tetrominoMatrixSize; column++) {
                 
-               
+                if(isOutsideOfTopboard(row)) continue;
                 if(!tetromino.matrix[row][column]) continue;
                 const cellIndex = convertPositionToIndex(
                     tetromino.row + row, 
@@ -235,21 +313,28 @@ document.addEventListener('keydown', onKeyDown)
 function onKeyDown(event){
     if (event.key == "Escape"){
         tooglePauseGame();
+    } 
+    // if Escape
+    if(!isPaused){
+        switch(event.key){
+                case ' ':
+                    dropTetrominoDown()
+                    break
+                case 'ArrowUp':
+                    rotateTetramino()
+                    break
+                case 'ArrowDown':
+                    moveTetraminoDown()
+                    break
+                case 'ArrowLeft':
+                    moveTetraminoLeft()
+                    break
+                case 'ArrowRight':
+                    moveTetraminoRight()
+                    break
+            }
     }
-    switch(event.key){
-        case 'ArrowUp':
-            rotateTetramino()
-            break
-        case 'ArrowDown':
-            moveTetraminoDown()
-            break
-        case 'ArrowLeft':
-            moveTetraminoLeft()
-            break
-        case 'ArrowRight':
-            moveTetraminoRight()
-            break
-    }
+    // if isPaused
     draw()
 }
 document.addEventListener('DOMContentLoaded', function() {
@@ -269,21 +354,30 @@ document.addEventListener('DOMContentLoaded', function() {
     btnDOWN.addEventListener('click', function() {
         moveTetraminoDown();
         draw();
+        
     });
     btnRIGHT.addEventListener('click', function() {
         moveTetraminoRight();
         draw();
     });
    
-  
-   
   });
   
-let isPaused = false;
+  function dropTetrominoDown(){
+        while(isValid()){
+            tetromino.row++;
+        }
+        tetromino.row--;
+    }
+
 function  tooglePauseGame(){
     if(isPaused === false){
         stopLoop()
+    } else {
+        
+        startLoop()
     }
+     isPaused = !isPaused
 }
 
 function rotateMatrix(matrixTetramino){
@@ -307,7 +401,7 @@ function moveTetraminoDown() {
         tetromino.row -= 1;
         placeTetramino();
     }
-    draw(); 
+    startLoop()
 }
 
 
@@ -333,22 +427,48 @@ function moveDown(){
     draw();
     stopLoop();
     startLoop();
+    if(isGameOver){
+        gameOver();
+    }
 }
-let timedId = null;
-moveDown();
+
+function gameOver(){
+    stopLoop();
+    //togglePauseGame()
+    gameOverFild.style.display = 'flex';
+    
+}
 function startLoop(){
-    setTimeout(()=>{ timedId = requestAnimationFrame(moveDown) }, 700)
+    if(!timedId){
+        timedId = setTimeout(()=>{ requestAnimationFrame(moveDown) }, tetromino_speed)
+    }
 }
 
 function stopLoop(){
     cancelAnimationFrame(timedId);
-    timedId = clearTimeout(timedId);
+    clearTimeout(timedId);
+
+    timedId = null;
 }
+function togglePauseGame(){
+    if(isPaused === false){
+        stopLoop();
+    } else {
+        startLoop();
+    }
+    isPaused = !isPaused;
+}
+
 /* RELOAD BUTTON */
-let reloadButton = document.getElementById("btn-RELOAD");
+/* let reloadButton = document.getElementById("btn-RELOAD");
     reloadButton.addEventListener("click", function() {
       location.reload();
     });
+
+btngameOver.addEventListener("click", function() {
+      location.reload();
+    }); */
+
 /* Колізія  */
 function isValid(){
     const matrixSize = tetromino.matrix.length;
@@ -360,6 +480,9 @@ function isValid(){
         }
     }
     return true;
+}
+function isOutsideOfTopboard(row){
+    return tetromino.row + row < 0;
 }
 
 function isOutsiteOfGameboard(row, column){
@@ -379,25 +502,50 @@ function hasCollisions(row, column){
 }
 
 
-
+/* TIMER */
 document.addEventListener("DOMContentLoaded", function () {
     var stopwatchElement = document.getElementById('stopwatch');
     var seconds = 0;
     var minutes = 0;
+    var timerInterval;
 
-    setInterval(function () {
-        seconds++;
-        if (seconds === 60) {
-            seconds = 0;
-            minutes++;
-        }
+    function startTimer() {
+        timerInterval = setInterval(function () {
+            seconds++;
+            if (seconds === 60) {
+                seconds = 0;
+                minutes++;
+            }
 
-        var formattedTime = pad(minutes) + ':' + pad(seconds);
-        stopwatchElement.innerHTML = formattedTime;
-    }, 1000);
+            var formattedTime = pad(minutes) + ':' + pad(seconds);
+            stopwatchElement.innerHTML = formattedTime;
+        }, 1000);
+    }
+
+    function resetTimer() {
+        clearInterval(timerInterval);
+        seconds = 0;
+        minutes = 0;
+        stopwatchElement.innerHTML = '00:00';
+    }
 
     function pad(value) {
         return value < 10 ? '0' + value : value;
     }
+
+    // Викликаємо цю функцію для початкового запуску таймера
+    startTimer();
+
+    // Додавання обробника подій для кнопки restart
+    btnRestart.addEventListener('click', function () {
+        document.querySelector('.grid').innerHTML = '';
+        gameOverFild.style.display = 'none';
+        resetTimer(); // Скидання таймера на 00
+        startTimer(); // Початок таймера знову
+        init();
+    });
+
+    
 });
+
 
