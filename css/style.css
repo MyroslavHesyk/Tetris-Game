@@ -398,6 +398,7 @@ header {
   align-items: center;
   justify-content: center;
   text-align: center;
+  animation: fadeIn 0.5s ease; 
   
 }
 .content-gameOver {
@@ -409,6 +410,15 @@ header {
 .content-gameOver .subtitle {
   
   font-size: 4vh;
+}
+.content-gameOver div p {
+  margin-top: 10px;
+}
+.content-gameOver div p:last-child {
+  margin-bottom: 20px;
+}
+.content-gameOver div p:first-child {
+  margin-top: 20px;
 }
 .btn-gameOver {
     font-family: 'Better VCR';
@@ -446,6 +456,15 @@ header {
   align-items: center;
   justify-content: center;
   text-align: center;
+  animation: fadeIn 0.5s ease; 
+}
+@keyframes fadeIn {
+  from {
+      opacity: 0; /* Початкова прозорість: непрозорий */
+  }
+  to {
+      opacity: 1; /* Кінцева прозорість: повністю прозорий */
+  }
 }
 .content-paused {
   max-width: 500px;
@@ -462,6 +481,7 @@ header {
     transition: 5s;
 }
 .buttons-paused {
+  
   max-width: 500px;
   width: 100%;
   display: flex;
@@ -472,7 +492,9 @@ header {
   font-size: 4vh;
 }
 .content-paused .btn-pixel {
-  font-size: 3vh;
+  font-size: 2.5vh;
+  font-family: 'Better VCR';
+  padding: 5px;
 }
 
 .howplayfield {
