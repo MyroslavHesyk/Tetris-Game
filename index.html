@@ -13,11 +13,9 @@
 
 </head>
 <body>
-    <!-- <iframe src="./assets/audio/tetris.mp3" allow="autoplay" style="display:none" id="iframeAudio">
-    </iframe>  -->
-    
+
     <header>
-        <!-- <div class="sound">
+<!--         <div class="sound">
             <button id="soundButton" class="sound-off pixel"><i class="fas fa-volume-mute"></i></button>
         </div>  -->
         <div class="header-text">
@@ -55,8 +53,12 @@
             <div></div> -->
         </div>
         <div class="buttons">
+            <div class="buttons-pause">
+                <button id="btn-pause" class="PAUSE btn-pixel">Pause <i class="fa-solid fa-pause"></i></button>
+                
+            </div>
             <div class="buttons-line">
-            <button id="btn-RELOAD" class="btn-RELOAD btn-pixel" ><i class="fa-solid fa-trash reload"></i></button>
+            <button id="btn-Restart" class="btn-Restart btn-pixel" ><i class="fa-solid fa-trash reload"></i></button>
             <button id="btn-UP" class="btn-UP btn-pixel"><i class="fa-solid fa-square-caret-up "></i></button>
             <!-- <button id="btn-GITHUB" class="btn-GITHUB btn-pixel"><a href="https://github.com/MyroslavHesyk/Tetris" target="_blank"><i class="fa-brands fa-github github"></i></a></button> -->
             <button id="soundButton" class="sound-off btn-pixel"><i class="fas fa-volume-mute"></i></a></button>
@@ -66,6 +68,10 @@
                 <button id="btn-LEFT" class="LEFT btn-pixel"><i class="fa-solid fa-square-caret-left"></i></button>
                 <button id="btn-DOWN" class="btn-DOWN btn-pixel" tabindex="-1"><i class="fa-solid fa-square-caret-down"></i></button>
                 <button id="btn-RIGHT" class="btn-RIGHT btn-pixel"><i class="fa-solid fa-square-caret-right"></i></button>
+            </div>
+            <div class="buttons-space">
+                <button id="btn-space" class="SPACE btn-pixel"><i class="fa-solid fa-arrows-down-to-line"></i></button>
+                
             </div>
        </div>
 
@@ -106,14 +112,22 @@
                 Level: <span id="level-result">0</span> <br>
                 Time: <span id="time-result">00:00</span> <br>
             </div>
-            <button class="btn-gameOver">Restart</button>
+            
+            <button id="" class="btn-gameOver">Restart</button>
         </div>
     </div>
 
     <div class="paused">
-        <h3 class="subtitle">  PAUSED  </h3>
-        <button>Resume</button>
-        <button>How to play</button>
+        <div class="content-paused">
+            <h3 class="subtitle">  PAUSED  </h3>
+            <div class="buttons-paused">
+                <button id="btn-resume" class=" btn-pixel">Resume <i class="fa-solid fa-play"></i></button>
+                <button id="btn-howtoplay" class=" btn-pixel">How to play <i class="fa-solid fa-gamepad"></i></button>
+            </div>
+            <div class="howplayfield">
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quibusdam quae tempora nobis sunt quo quis consequuntur ullam aspernatur reiciendis suscipit! Eveniet, reprehenderit quae. Inventore eligendi excepturi placeat recusandae ut dolorem.</p>
+            </div>
+        </div>
     </div>
     
 

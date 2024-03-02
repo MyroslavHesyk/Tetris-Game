@@ -2,9 +2,12 @@ const scoreElement = document.querySelector('.score-value');
 const scoreResultElement = document.querySelector('#score-result');
 const levelElement = document.querySelector('.level-value');
 const levelResultElement = document.querySelector('#level-result');
-const btnRestart = document.querySelector('#btn-RELOAD');
+const btnRestart = document.querySelector('#btn-Restart');
+const btnHowToPlay = ".btn-howtoplay" ;
 const gameOverFild = document.querySelector('.gameOver');
+const gamePauseFild = document.querySelector('.paused');
 const btngameOver = document.querySelector('.btn-gameOver')
+const btnPause = document.querySelector('#btn-pause');
 const PLAYFIELD_COLUMNS = 10 ;
 const PLAYFIELD_ROWS = 20 ;
 let isGameOver = false ;
@@ -64,6 +67,8 @@ function init(){
     level = 1;
     levelElement.innerHTML = 1;
     isGameOver = false;
+    gameOverFild.style.display = 'none';
+    gamePauseFild.style.display = 'none';
     generatePlayField();
     generateTetramino();
     cells = document.querySelectorAll('.grid div');
@@ -73,16 +78,23 @@ function init(){
 
 btnRestart.addEventListener('click', function(){
     document.querySelector('.grid').innerHTML = '';
-    gameOverFild.style.display = 'none';
-   
+    
+    resetTimer(); // Скидання таймера на 00 та його перезапуск
     init();
+    document.body.focus();
 })
+/* 
+//чомусь баг: після запуску перестає працювати керування клавішами на клавіатурі
 btngameOver.addEventListener('click', function(){
     document.querySelector('.grid').innerHTML = '';
-    gameOverFild.style.display = 'none';
-   
+    
+    resetTimer(); // Скидання таймера на 00 та його перезапуск
     init();
-})
+}) */
+
+btngameOver.addEventListener("click", function() {
+    location.reload();
+  }); 
 
 function convertPositionToIndex(row, column){
     return row * PLAYFIELD_COLUMNS + column;
@@ -113,7 +125,7 @@ function countScore(destroyRows){
 
 function countLevel(score) {
 switch (true) {
-    case score >= 0 && score <= 10:
+    case score === 0 || score < 10:
         level = 1;
         tetromino_speed = 1000;
         break;
@@ -313,7 +325,9 @@ document.addEventListener('keydown', onKeyDown)
 function onKeyDown(event){
     if (event.key == "Escape"){
         tooglePauseGame();
+        gamePauseFild.style.display = 'flex';
     } 
+
     // if Escape
     if(!isPaused){
         switch(event.key){
@@ -337,11 +351,15 @@ function onKeyDown(event){
     // if isPaused
     draw()
 }
+
+
 document.addEventListener('DOMContentLoaded', function() {
     const btnUP = document.getElementById('btn-UP');
     const btnLEFT = document.getElementById('btn-LEFT');
     const btnDOWN= document.getElementById('btn-DOWN');
     const btnRIGHT = document.getElementById('btn-RIGHT');
+    const btnSPACE = document.getElementById('btn-space');
+    const btnRESUME = document.querySelector('#btn-resume');
   
     btnUP.addEventListener('click', function() {
         rotateTetramino()
@@ -360,6 +378,18 @@ document.addEventListener('DOMContentLoaded', function() {
         moveTetraminoRight();
         draw();
     });
+    btnSPACE.addEventListener('click', function() {
+        dropTetrominoDown();
+        draw();
+    });
+    btnRESUME.addEventListener('click', function(){
+        gamePauseFild.style.display = 'none';
+        tooglePauseGame();
+    })
+    btnPause.addEventListener('click', function(){
+        tooglePauseGame();
+        gamePauseFild.style.display = 'flex';
+    })
    
   });
   
@@ -372,9 +402,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function  tooglePauseGame(){
     if(isPaused === false){
+        pauseTimer();
         stopLoop()
     } else {
-        
+        resumeTimer();
         startLoop()
     }
      isPaused = !isPaused
@@ -433,8 +464,10 @@ function moveDown(){
 }
 
 function gameOver(){
-    stopLoop();
-    //togglePauseGame()
+   
+    togglePauseGame();
+    updateGameResultTime();
+    gamePauseFild.style.display = 'none';
     gameOverFild.style.display = 'flex';
     
 }
@@ -444,30 +477,32 @@ function startLoop(){
     }
 }
 
-function stopLoop(){
+function stopLoop() {
     cancelAnimationFrame(timedId);
     clearTimeout(timedId);
-
     timedId = null;
 }
-function togglePauseGame(){
-    if(isPaused === false){
+function togglePauseGame() {
+    if (isPaused === false) {
         stopLoop();
+        pauseTimer();
     } else {
         startLoop();
+        resumeTimer();
     }
     isPaused = !isPaused;
 }
 
+$('#btn-howtoplay').click(function(){
+    $('.howplayfield').slideToggle();
+});
 /* RELOAD BUTTON */
 /* let reloadButton = document.getElementById("btn-RELOAD");
     reloadButton.addEventListener("click", function() {
       location.reload();
     });
+*/
 
-btngameOver.addEventListener("click", function() {
-      location.reload();
-    }); */
 
 /* Колізія  */
 function isValid(){
@@ -503,49 +538,59 @@ function hasCollisions(row, column){
 
 
 /* TIMER */
-document.addEventListener("DOMContentLoaded", function () {
-    var stopwatchElement = document.getElementById('stopwatch');
-    var seconds = 0;
-    var minutes = 0;
-    var timerInterval;
 
-    function startTimer() {
-        timerInterval = setInterval(function () {
-            seconds++;
-            if (seconds === 60) {
-                seconds = 0;
-                minutes++;
-            }
+function pauseTimer() {
+    clearInterval(timerInterval);
+}
 
-            var formattedTime = pad(minutes) + ':' + pad(seconds);
-            stopwatchElement.innerHTML = formattedTime;
-        }, 1000);
-    }
-
-    function resetTimer() {
-        clearInterval(timerInterval);
-        seconds = 0;
-        minutes = 0;
-        stopwatchElement.innerHTML = '00:00';
-    }
-
-    function pad(value) {
-        return value < 10 ? '0' + value : value;
-    }
-
-    // Викликаємо цю функцію для початкового запуску таймера
+function resumeTimer() {
     startTimer();
+}
 
-    // Додавання обробника подій для кнопки restart
-    btnRestart.addEventListener('click', function () {
-        document.querySelector('.grid').innerHTML = '';
-        gameOverFild.style.display = 'none';
-        resetTimer(); // Скидання таймера на 00
-        startTimer(); // Початок таймера знову
-        init();
-    });
+var stopwatchElement = document.getElementById('stopwatch');
+var seconds = 0;
+var minutes = 0;
+var timerInterval;
 
-    
-});
+function startTimer() {
+    timerInterval = setInterval(function () {
+        seconds++;
+        if (seconds === 60) {
+            seconds = 0;
+            minutes++;
+        }
+
+        var formattedTime = pad(minutes) + ':' + pad(seconds);
+        stopwatchElement.innerHTML = formattedTime;
+    }, 1000);
+}
+
+// Початковий запуск таймера
+startTimer();
+
+function resetTimer() {
+    clearInterval(timerInterval);
+    seconds = 0;
+    minutes = 0;
+    stopwatchElement.innerHTML = '00:00';
+   
+    startTimer(); // Перезапуск таймера
+}
+
+function updateGameResultTime() {
+    var timeResultElement = document.getElementById('time-result');
+    timeResultElement.textContent = stopwatchElement.textContent;
+}
+
+function pad(value) {
+    return value < 10 ? '0' + value : value;
+}
+
+// Додавання обробника подій для кнопки restart
+
+
+
+
+
 
 
