@@ -467,6 +467,7 @@ function gameOver(){
    
     togglePauseGame();
     updateGameResultTime();
+    updateGame(score);
     gamePauseFild.style.display = 'none';
     gameOverFild.style.display = 'flex';
     
