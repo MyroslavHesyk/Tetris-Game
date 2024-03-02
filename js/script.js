@@ -392,7 +392,7 @@ document.addEventListener('DOMContentLoaded', function() {
     })
    
   });
-  
+  //dffd
   function dropTetrominoDown(){
         while(isValid()){
             tetromino.row++;
