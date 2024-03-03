@@ -512,9 +512,39 @@ header {
 
 
 
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 100px;
+  height: 14px;
+  margin-top: 10px;
+  box-shadow: 0 3px 0 rgb(167, 167, 167);
+  background: repeating-linear-gradient(90deg,var(--random-color) 0 14px,#0000 0 100%) 0 0/calc(100%/4) 100%;
+  animation: l1 1s infinite linear, colorChange 6s infinite linear ;
+}
+@keyframes l1 {
+    100% {background-position:calc(100%/3) 0}
+}
 
-
-
+@keyframes colorChange {
+  0% {
+    --random-color: #FEE904;
+  }
+  20% {
+    --random-color: #027FFD;
+  }
+  40% {
+    --random-color: #A900FD;
+  }
+  60% {
+    --random-color: #00F0F0;
+  }
+  80% {
+    --random-color: #F0A100;
+  }
+  100% {
+    --random-color: #55FE01;
+  }
+}
 
 
 

@@ -57,3 +57,19 @@ $(document).ready(function () {
         aboutDialog.dialog("close");
     }
 });
+
+
+
+/* function generateRandomColor() {
+    var colors = ['#FEE904', '#027FFD', '#A900FD', '#00F0F0', '#F0A100', '#55FE01', '#FE0056'];
+    var randomIndex = Math.floor(Math.random() * colors.length);
+    return colors[randomIndex];
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    var loader = document.querySelector('.loader');
+    setInterval(function () {
+        var randomColor = generateRandomColor();
+        loader.style.setProperty('--random-color', randomColor);
+    }, 1000); // Змінюємо кожну секунду (можна налаштувати за необхідністю)
+}); */
