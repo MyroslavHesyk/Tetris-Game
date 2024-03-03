@@ -19,7 +19,7 @@ $(document).ready(function () {
 
     infoToggle.click(function () {
         infoDialog.dialog("open");
-        tooglePauseGame()
+        //tooglePauseGame()   //чомусь не працює коректно
     });
 
 
@@ -42,17 +42,18 @@ $(document).ready(function () {
 
     aboutToggle.click(function () {
         aboutDialog.dialog("open");
-        tooglePauseGame()
+        //tooglePauseGame()
     });
 
 
     $("#closeDialogButton").on("click", function () {
         closeAboutDialog();
+       
     });
     
-    // Ваша функція для закриття діалогового вікна
+    // функція  закриття діалогового вікна
     function closeAboutDialog() {
-        isPaused = false; // Продовжити гру
+        //tooglePauseGame() // Продовжити гру
         aboutDialog.dialog("close");
     }
 });

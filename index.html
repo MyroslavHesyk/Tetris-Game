@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,138 +13,164 @@
     <link rel="stylesheet" href="./css/style.css">
 
 </head>
+
 <body>
 
     <header>
-<!--         <div class="sound">
+        <!--         <div class="sound">
             <button id="soundButton" class="sound-off pixel"><i class="fas fa-volume-mute"></i></button>
         </div>  -->
         <div class="header-text">
             <h1 class="title">Tetris original</h1>
-            <h3 class="subtitle"><span id="aboutToggle"><i class="fa-regular fa-address-card"></i>  by Myroslav Hesyk   </span> | <span id="infoToggle"> info  <i class="fa-solid fa-book-open"></i></span></h3>
+            <h3 class="subtitle"><span id="aboutToggle"><i class="fa-regular fa-address-card"></i> by Myroslav Hesyk
+                </span> | <span id="infoToggle"> info <i class="fa-solid fa-book-open"></i></span></h3>
         </div>
     </header>
-    
+
     <div class="main">
         <div class="main-score-block">
-        <div class="main-score">
+            <div class="main-score">
                 <div class="score-block">
                     <p class="score-title">Score</p>
                     <div class="score-value" data-type="clean" data-meaning="000"><span>000</span>000</div>
                 </div>
-        </div>
-        <div class="main-score">
-            <div class="score-block">
-                <p class="score-title">Best Score</p>
-                <div class="best-score-value" >000</div>
             </div>
-    </div>
-        <div class="main-score">
-            <div class="score-block">
-                <p class="score-title">Level</p>
-                <div class="score-value level-value" data-type="lvl" data-meaning="1">1</div>
+            <div class="main-score">
+                <div class="score-block">
+                    <p class="score-title">Best Score</p>
+                    <div class="best-score-value">000</div>
+                </div>
             </div>
-        </div>
-        <div class="main-score">
-            <div class="score-block">
-                <p class="score-title">Time</p>
-                <div class="time-value" id="stopwatch">
-                    <span>00:00</span>
+            <div class="main-score">
+                <div class="score-block">
+                    <p class="score-title">Level</p>
+                    <div class="score-value level-value" data-type="lvl" data-meaning="1">1</div>
+                </div>
+            </div>
+            <div class="main-score">
+                <div class="score-block">
+                    <p class="score-title">Time</p>
+                    <div class="time-value" id="stopwatch">
+                        <span>00:00</span>
+                    </div>
                 </div>
             </div>
         </div>
-        </div>
         <div class="grid">
-            <!-- <div></div>
-            <div></div>
-            <div></div> -->
+            <!-- TETRIS HERE -->
         </div>
         <div class="buttons">
             <div class="buttons-pause">
                 <button id="btn-pause" class="PAUSE btn-pixel">Pause <i class="fa-solid fa-pause"></i></button>
-                
+
             </div>
             <div class="buttons-line">
-            <button id="btn-Restart" class="btn-Restart btn-pixel" ><i class="fa-solid fa-trash reload"></i></button>
-            <button id="btn-UP" class="btn-UP btn-pixel"><i class="fa-solid fa-square-caret-up "></i></button>
-            <!-- <button id="btn-GITHUB" class="btn-GITHUB btn-pixel"><a href="https://github.com/MyroslavHesyk/Tetris" target="_blank"><i class="fa-brands fa-github github"></i></a></button> -->
-            <button id="soundButton" class="sound-off btn-pixel"><i class="fas fa-volume-mute"></i></a></button>
+                <button id="btn-Restart" class="btn-Restart btn-pixel"><i class="fa-solid fa-trash reload"></i></button>
+                <button id="btn-UP" class="btn-UP btn-pixel"><i class="fa-solid fa-square-caret-up "></i></button>
+                <!-- <button id="btn-GITHUB" class="btn-GITHUB btn-pixel"><a href="https://github.com/MyroslavHesyk/Tetris" target="_blank"><i class="fa-brands fa-github github"></i></a></button> -->
+                <button id="soundButton" class="sound-off btn-pixel"><i class="fas fa-volume-mute"></i></a></button>
 
-           </div>
+            </div>
             <div class="buttons-line">
                 <button id="btn-LEFT" class="LEFT btn-pixel"><i class="fa-solid fa-square-caret-left"></i></button>
-                <button id="btn-DOWN" class="btn-DOWN btn-pixel" tabindex="-1"><i class="fa-solid fa-square-caret-down"></i></button>
-                <button id="btn-RIGHT" class="btn-RIGHT btn-pixel"><i class="fa-solid fa-square-caret-right"></i></button>
+                <button id="btn-DOWN" class="btn-DOWN btn-pixel" tabindex="-1"><i
+                        class="fa-solid fa-square-caret-down"></i></button>
+                <button id="btn-RIGHT" class="btn-RIGHT btn-pixel"><i
+                        class="fa-solid fa-square-caret-right"></i></button>
             </div>
             <div class="buttons-space">
                 <button id="btn-space" class="SPACE btn-pixel"><i class="fa-solid fa-arrows-down-to-line"></i></button>
-                
-            </div>
-       </div>
 
-       
-    </div> 
+            </div>
+        </div>
+
+
+    </div>
+
     <div id="infoDialog" title="">
-        <h3 class="title-info">Version 1.0</h3>
-        <ul class="ul-info">
-            <li class="subtitle-info">Desktop and mobile versions are available</li>
-            <li class="subtitle-info">Added buttons:
-                <ul class="ul-info">
-                    <li><b>trash</b> - refresh the page</li>
-                    <li><b>up</b> - rotation of the tetromino</li> 
-                    <li><b>speaker</b> - on/off music</li>
-                    <li><b>left/down/right</b> - move the tetromino</li>
-                </ul>
-            </li>
-            <!-- <li>Added score block </li>
-            <li>Added level </li> -->
-            <li>Added time</li>
+        <h3 class="title-info">About game</h3>
+        <ul class="ul-info" type="none">
+            <li >The game was developed from 02/19/2024 to 03/03/2024 at a marathon by the CyberBionic Systematics training center</li> 
+            <li>The game code is open for viewing  <a href="https://github.com/MyroslavHesyk/Tetris" target="_blank" style="border: none; border-bottom: 1px solid rgb(167, 167, 167); "> HERE</a></li>
+            <li>I hope you liked my mini project.</li>
+            <li> I will be very happy if you want to communicate with me, you will find contacts in the adjacent button</li>
         </ul>
     </div>
     <div id="aboutDialog" title="">
         <h3 class="title-info">My social networks</h3>
         <div class="about-line">
-            <a class=" btn-pixel" href="https://www.instagram.com/myroslav_hesyk/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-            <a class=" btn-pixel" href="https://www.facebook.com/profile.php?id=100009392538108" target="_blank"><i class="fa-brands fa-facebook"></i></a>
-            <a class=" btn-pixel" href="https://github.com/MyroslavHesyk" target="_blank"><i class="fa-brands fa-github"></i></a>
-            <a class=" btn-pixel" href="https://www.linkedin.com/in/myroslav-hesyk/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+            <a class=" btn-pixel" href="https://www.instagram.com/myroslav_hesyk/" target="_blank"><i
+                    class="fa-brands fa-instagram"></i></a>
+            <a class=" btn-pixel" href="https://www.facebook.com/profile.php?id=100009392538108" target="_blank"><i
+                    class="fa-brands fa-facebook"></i></a>
+            <a class=" btn-pixel" href="https://github.com/MyroslavHesyk" target="_blank"><i
+                    class="fa-brands fa-github"></i></a>
+            <a class=" btn-pixel" href="https://www.linkedin.com/in/myroslav-hesyk/" target="_blank"><i
+                    class="fa-brands fa-linkedin"></i></a>
         </div>
+        <ul class="ul-info" type="none" >
+            <li align="center" style="margin-top: 20px;">I will be happy to communicate and make new friends</li> 
+        </ul>
     </div>
     <div class="gameOver">
-        <div class="content-gameOver"> 
+        <div class="content-gameOver">
             <h3 class="subtitle"> GAME OVER </h3>
             <div>
-               <p> <strong> Result</strong></p>
-               <p> Score: <span id="score-result">0</span> </p>
-               <p>Level: <span id="level-result">0</span> </p>
+                <p> <strong> Result</strong></p>
+                <p> Score: <span id="score-result">0</span> </p>
+                <p>Level: <span id="level-result">0</span> </p>
                 <p> Time: <span id="time-result">00:00</span> </p>
             </div>
-            
+
             <button id="" class="btn-gameOver">Restart</button>
         </div>
     </div>
 
-    <div class="paused" >
+    <div class="paused">
         <div class="content-paused">
-            <h3 class="subtitle">  PAUSED  </h3>
+            <h3 class="subtitle"> PAUSED </h3>
             <div class="buttons-paused">
                 <button id="btn-resume" class=" btn-pixel">Resume <i class="fa-solid fa-play"></i></button>
                 <button id="btn-howtoplay" class=" btn-pixel">How to play <i class="fa-solid fa-gamepad"></i></button>
             </div>
             <div class="howplayfield">
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quibusdam quae tempora nobis sunt quo quis consequuntur ullam aspernatur reiciendis suscipit! Eveniet, reprehenderit quae. Inventore eligendi excepturi placeat recusandae ut dolorem.</p>
+                <ul class="ul-info" type="none">
+                    
+                    <li class="howplay-info"><b>Buttons:</b>
+                        <ul class="ul-info ul-how-play" type="none">
+                            <li>Pause <i class="fa-solid fa-pause"></i> or Esc - pause the game</li>
+                            <li><i class="fa-solid fa-trash"></i> - refresh the game</li>
+                            <li><i class="fa-solid fa-square-caret-up "></i> - rotation of the tetromino</li>
+                            <li><i class="fas fa-volume-mute"></i> - on/off music</li>
+                            <li><i class="fa-solid fa-square-caret-left"></i>/<i
+                                class="fa-solid fa-square-caret-down"></i>/<i
+                                class="fa-solid fa-square-caret-right"></i> - move the tetromino</li>
+                            <li><i class="fa-solid fa-arrows-down-to-line"></i> - drop the tetromino down</li>
+                            <li><i class="fa-solid fa-keyboard"></i> - control from the keyboard with arrows and W/A/S/D is also available</li>
+                        </ul>
+                    </li>
+                    <li>About score 
+                        <ul class="ul-info ul-how-play" type="none">
+                            <li>1 filled line = 10 points <br> 2 filled line = 25 points <br> 3 filled line  = 75 points <br> 4 filled line = 100 points</li>
+                            <li>Your best score is saved in the browser</li>
+                            <li>As your points increase, your level and speed drop tetromino also increase</li>
+                            <li>The maximum level of the game is 7</li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
-    
 
-   
+
+
     <script src="./js/jquery-3.7.1.min.js"></script>
-	<script src="./js/jquery-ui.js"></script>
+    <script src="./js/jquery-ui.js"></script>
     <script src="./js/script.js"></script>
     <script src="./js/sound.js"></script>
     <script src="./js/menu.js"></script>
     <script src="./js/animation.js"></script>
     <script src="./js/bestscore.js"></script>
 </body>
+
 </html>

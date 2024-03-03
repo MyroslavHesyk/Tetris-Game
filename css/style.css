@@ -70,6 +70,7 @@ header {
     align-items: center;
     text-align: center;
     height: 85%;
+    margin: 0 auto;
 }
 .main-score-block{
   display: block;
@@ -136,33 +137,8 @@ header {
 }
 
 
-/* Button Sound */
-/* .pixel {
-    font-size: 25px;
-    color: rgb(167, 167, 167);
-    height: auto;
-    margin: 10px;
-    font-family: 'Pixelify Sans';
-    
-    position: relative;
-    display: inline-block;
-    vertical-align: top;
-    text-transform: uppercase;
-    
-    cursor: pointer;
-    
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
-  
-  .pixel:active {
-    top: 2px;
-  } */
-  
+/* Button style */
+
  
   .pixel {
     position: fixed;
@@ -244,6 +220,15 @@ header {
     font-size: 5vh;
     color: rgb(167, 167, 167);
     z-index: 1; /* Значення z-index робимо великим, щоб кнопка була над іншими елементами */
+    padding: 5px 3px;
+    margin: 2px 10px;
+    background: #0F0F0F;
+    transition: 0.3s;
+    cursor: pointer;
+  }
+  .btn-pixel:hover {
+    background: #1a1a1a;
+    color: rgb(185, 185, 185);
   }
   
   .btn-pixel::before,
@@ -253,6 +238,11 @@ header {
     position: absolute;
     background: #0F0F0F;
     z-index: -1;
+    transition: 0.3s;
+  }
+  .btn-pixel:hover::before,
+  .btn-pixel:hover::after{
+    background: #1a1a1a;
   }
   
   .btn-pixel::before {
@@ -269,11 +259,9 @@ header {
     right: -6px;
   }
   
-  .btn-pixel {
-    padding: 5px 3px;
-    margin: 2px 10px;
-    background: #0F0F0F;
-  }
+  
+
+  
   .sound-off::before, .btn-Restart::before,
   .sound-off::after, .btn-Restart::after {
     content: "";
@@ -301,6 +289,7 @@ header {
    width: 100%;
    font-size: 4vh;
    font-family:  'Better VCR';
+   cursor: pointer;
 }
 
 
@@ -368,7 +357,7 @@ header {
   font-family: 'Better VCR';
   text-align: center;
 }
-.subtitle-info {
+.subtitle-info, .howplay-info {
   font-family: 'Better VCR';
     font-size: 12px;
     margin-top: 10px;
@@ -378,6 +367,18 @@ header {
     font-size: 12px;
     margin: 10px;
 }
+.ul-info li {
+  margin-bottom: 10px;
+  
+}
+.ul-how-play li {
+  text-align: left;
+}
+.ul-how-play li i {
+  font-size: 24px;
+  
+}
+
 /* .ul-info b {
   font-size: 14px;
 } */
@@ -487,6 +488,9 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: center;
+}
+.buttons-paused button {
+  cursor: pointer;
 }
 .content-paused .subtitle {
   font-size: 4vh;

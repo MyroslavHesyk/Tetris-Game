@@ -83,9 +83,9 @@ btnRestart.addEventListener('click', function(){
     init();
     document.body.focus();
 })
-/* 
+
 //чомусь баг: після запуску перестає працювати керування клавішами на клавіатурі
-btngameOver.addEventListener('click', function(){
+/* btngameOver.addEventListener('click', function(){
     document.querySelector('.grid').innerHTML = '';
     
     resetTimer(); // Скидання таймера на 00 та його перезапуск
@@ -325,7 +325,10 @@ document.addEventListener('keydown', onKeyDown)
 function onKeyDown(event){
     if (event.key == "Escape"){
         tooglePauseGame();
-        gamePauseFild.style.display = 'flex';
+        event.target.blur()
+        if (gamePauseFild) {
+            gamePauseFild.style.display = (gamePauseFild.style.display === 'flex') ? 'none' : 'flex';
+        }
     } 
 
     // if Escape
@@ -346,7 +349,27 @@ function onKeyDown(event){
                 case 'ArrowRight':
                     moveTetraminoRight()
                     break
+                case 'w':
+                case 'W':
+                    rotateTetramino()
+                    break
+                case 's':
+                case 'S':
+                    moveTetraminoDown()
+                    break
+                case 'a':
+                case 'A':
+                    moveTetraminoLeft()
+                    break
+                case 'd':
+                case 'D':
+                    moveTetraminoRight()
+                    break
+                
             }
+
+            
+        
     }
     // if isPaused
     draw()
