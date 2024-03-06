@@ -351,18 +351,26 @@ function onKeyDown(event){
                     break
                 case 'w':
                 case 'W':
+                case 'ц':
+                case 'Ц':
                     rotateTetramino()
                     break
                 case 's':
                 case 'S':
+                case 'і':
+                case 'І':
                     moveTetraminoDown()
                     break
                 case 'a':
                 case 'A':
+                case 'ф':
+                case 'Ф':
                     moveTetraminoLeft()
                     break
                 case 'd':
                 case 'D':
+                case 'в':
+                case 'В':
                     moveTetraminoRight()
                     break
                 
