@@ -129,27 +129,27 @@ switch (true) {
         level = 1;
         tetromino_speed = 1000;
         break;
-    case score > 10 && score <= 35:
+    case score > 10 && score <= 50:
         level = 2;
         tetromino_speed = 800;
         break;
-    case score > 35 && score <= 60:
+    case score > 50 && score <= 90:
         level = 3;
         tetromino_speed = 700;
         break;
-    case score > 60 && score <= 85:
+    case score > 90 && score <= 130:
         level = 4;
         tetromino_speed = 600;
         break;
-    case score > 85 && score <= 105:
+    case score > 130 && score <= 170:
         level = 5;
         tetromino_speed = 500;
         break;
-    case score > 105 && score <= 110:
+    case score > 170 && score <= 210:
         level = 6;
         tetromino_speed = 450;
         break;
-    case score > 110 && score <= 120:
+    case score > 210 :
         level = 7;
         tetromino_speed = 400;
         break;    
