@@ -20,7 +20,7 @@ a {
   color:rgb(167, 167, 167);
 }
 html {
-  height: 100%;
+  min-height: 100%;
 }
 body {
     background: 
@@ -28,7 +28,7 @@ body {
     /* background: url(./assets/img/gray-background.jpg) no-repeat; */
     background-position: center;
   
-    height: 100%;
+    min-height: 100%;
     color: #0F0F0F;
     box-sizing: border-box;
     display: flex;
