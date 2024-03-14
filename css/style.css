@@ -230,6 +230,7 @@ header {
     background: #0F0F0F;
     transition: 0.3s;
     cursor: pointer;
+    touch-action: none;
   }
   .btn-pixel:hover {
     background: #1a1a1a;
