@@ -16,7 +16,7 @@ let isPaused = false ;
 let playField ;
 let tetromino ;
 let score = 0 ;
-let level = 0;
+let level = 1;
 let tetromino_speed = 1000;
 const TETROMINO_NAMES = ['O', 'J','L','T','I','S','Z'];
 const TETROMINO_NAMBERS = [1,2,3,4,5,6,7];
@@ -64,8 +64,8 @@ init();
 function init(){
     score = 0;
     scoreElement.innerHTML = 0;
-    level = 1;
-    levelElement.innerHTML = 1;
+    level = 'min'
+    levelElement.innerHTML = level;
     isGameOver = false;
     gameOverFild.style.display = 'none';
     gamePauseFild.style.display = 'none';
@@ -126,7 +126,7 @@ function countScore(destroyRows){
 function countLevel(score) {
 switch (true) {
     case score === 0 || score < 10:
-        level = 1;
+        level = 'min';
         tetromino_speed = 1000;
         break;
     case score > 10 && score <= 50:
@@ -149,10 +149,38 @@ switch (true) {
         level = 6;
         tetromino_speed = 450;
         break;
-    case score > 210 :
+    case score > 210 && score <= 250:
         level = 7;
         tetromino_speed = 400;
-        break;    
+        break;
+    case score > 250 && score <= 300:
+        level = 8;
+        tetromino_speed = 375;
+        break;
+    case score > 300 && score <= 330:
+        level = 9;
+        tetromino_speed = 375;
+        break; 
+    case score > 330 && score <= 360:
+        level = 10;
+        tetromino_speed = 370;
+        break;   
+    case score > 360 && score <= 400:
+        level = 10;
+        tetromino_speed = 365;
+        break; 
+    case score > 400 && score <= 450:
+        level = 11;
+        tetromino_speed = 360;
+        break;  
+    case score > 450 && score <= 495:
+        level = 12;
+        tetromino_speed = 360;
+        break; 
+    case score >= 500:
+        level = 'max';
+        tetromino_speed = 350;
+        break;  
 }
     levelElement.innerHTML = level;
     levelResultElement.innerHTML = level;
