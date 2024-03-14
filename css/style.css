@@ -35,9 +35,10 @@ body {
     flex-direction: column; 
 }
 header {
-  height: 15%;
+ /*  height: 15%; */
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 
@@ -73,8 +74,8 @@ header {
     justify-content: center;
     align-items: center;
     text-align: center;
-    height: 85%;
-    margin: 0 auto;
+   /*  height: 85%; */
+    margin:  auto;
 }
 .main-score-block{
   display: block;
@@ -556,11 +557,7 @@ header {
 
 
   @media (max-width: 768px) {
-   /*  header {
   
-      display: block;
-      
-    } */
     .pixel {
       position: relative; 
       top: 10px;
@@ -570,9 +567,10 @@ header {
     .main {
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
       text-align: center;
+      /* margin-top: 20px; */
   }
   .main-score-block{
     display: flex;
