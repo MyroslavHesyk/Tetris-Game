@@ -5,7 +5,7 @@
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
     touch-action: none;
-   
+
 }
 button:focus {
   outline: none; 
@@ -330,7 +330,7 @@ header {
             color: #525252;
             font-size: 24px;
             position: relative;
-            overflow: hidden;
+           /*  overflow: hidden; */
           }
           #infoToggle:hover,
           #aboutToggle:hover {
